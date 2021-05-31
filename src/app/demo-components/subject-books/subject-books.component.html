@@ -1,0 +1,12 @@
+<div *ngFor="let book of books$ | async">
+  <span>{{ book }} </span>
+</div>
+
+<form [formGroup]="booksForm" (ngSubmit)="addBook()">
+  <div>
+    <label for="title"> Title </label>
+    <input id="title" type="text" formControlName="title" />
+  </div>
+
+  <button class="button" type="submit">Add book</button>
+</form>

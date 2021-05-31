@@ -1,0 +1,18 @@
+<ng-container *ngIf="permissionsFetched$ | async">
+  <ng-container *ngIf="filePermissions$ | async as filePermissions">
+    <p>File names:</p>
+    <div *ngFor="let filePermission of filePermissions">
+      {{ filePermission.fileName }}
+      <ul>
+        <li *ngFor="let permission of filePermission.permissions">
+          {{ permission }}
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+</ng-container>
+
+<!-- Beware - Double subscribe, as each async pipe call subscribes-->
+<ng-container *ngIf="!(permissionsFetched$ | async)">
+  <p>Loading...</p>
+</ng-container>
